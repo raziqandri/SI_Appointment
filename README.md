@@ -4,6 +4,18 @@ Rest API asisten dosen untuk Tugas Proyek [APAP Gasal 2018/2019](https://github.
 
 Base url : 
 
+API List:
+* [getAllPasienIGD](#getallpasienigd)
+* [getAllPasienRawatJalan](#getallpasienrawatjalan)
+* [getPasien](#getpasien)
+* [getAllDokter](#getalldokter)
+* [getDokter](#getdokter)
+* [getAllStaffFarmasi](#getallstafffarmasi)
+* [getAllStaffLab](#getallstafflab)
+* [addBilling](#addbilling)
+* [addLabResult](#addlabresult)
+* [updatePasienStatus](#updatepasienstatus)
+
 ## getAllPasienIGD
 
 Mengembalikan daftar semua pasien yang mendaftar di IGD
