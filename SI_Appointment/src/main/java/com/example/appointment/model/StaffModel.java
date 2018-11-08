@@ -1,4 +1,4 @@
-package com.example.appointment.Model;
+package com.example.appointment.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -6,8 +6,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "dokter")
-public class DokterModel implements Serializable {
+@Table(name = "staff")
+public class StaffModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,6 +16,10 @@ public class DokterModel implements Serializable {
     @Size(max = 255)
     @Column(name = "nama", nullable = false)
     private String nama;
+
+    @NotNull
+    @Column(name = "jenis", nullable = false)
+    private int jenis;
 
     public long getId() {
         return id;
@@ -31,5 +35,13 @@ public class DokterModel implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public int getJenis() {
+        return jenis;
+    }
+
+    public void setJenis(int jenis) {
+        this.jenis = jenis;
     }
 }

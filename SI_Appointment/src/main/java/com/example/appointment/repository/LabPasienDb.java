@@ -1,6 +1,7 @@
-package com.example.appointment.Repository;
+package com.example.appointment.repository;
 
-import com.example.appointment.Model.LabPasienModel;
+import com.example.appointment.model.LabPasienModel;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

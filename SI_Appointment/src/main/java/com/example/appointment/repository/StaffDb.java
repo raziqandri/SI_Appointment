@@ -1,10 +1,13 @@
-package com.example.appointment.Repository;
+package com.example.appointment.repository;
 
-import com.example.appointment.Model.StaffModel;
+import java.util.List;
+
+import com.example.appointment.model.StaffModel;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StaffDb extends JpaRepository<StaffModel, Long> {
-    StaffModel findByJenis(int jenis);
+    List<StaffModel> findByJenis(int jenis);
 }

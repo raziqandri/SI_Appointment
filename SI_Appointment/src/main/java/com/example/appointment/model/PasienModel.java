@@ -1,14 +1,26 @@
-package com.example.appointment.Model;
+package com.example.appointment.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "pasien")
@@ -25,13 +37,14 @@ public class PasienModel implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="status", referencedColumnName="id", nullable=false)
     @OnDelete(action= OnDeleteAction.NO_ACTION)
-    @JsonIgnore
     private StatusPasienModel statusPasien;
 
     @OneToMany(mappedBy="pasien", fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @JsonIgnore
     private List<LabPasienModel> pasienLab;
 
     @OneToMany(mappedBy="pasien", fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @JsonIgnore
     private List<TagihanPasienModel> pasienTagihan;
 
     public long getId() {
