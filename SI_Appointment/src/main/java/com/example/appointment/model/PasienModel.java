@@ -34,7 +34,7 @@ public class PasienModel implements Serializable {
     @Column(name = "nama", nullable = false)
     private String nama;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="status", referencedColumnName="id", nullable=false)
     @OnDelete(action= OnDeleteAction.NO_ACTION)
     private StatusPasienModel statusPasien;
