@@ -20,20 +20,42 @@ API List:
 
 Mengembalikan daftar semua pasien yang mendaftar di IGD
 
-**URL** : `getAllPasienIGD/`
+**URL** : `http://si-appointment.herokuapp.com/api/getAllPasienIGD/`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 2,
+      "nama": "Hana Purwanti",
+      "statusPasien": {
+        "id": 1,
+        "jenis": "Mendaftar di IGD"
+      }
+    },
+    {
+      "id": 3,
+      "nama": "Kamila Utami",
+      "statusPasien": {
+        "id": 1,
+        "jenis": "Mendaftar di IGD"
+      }
+    }
+  ]
+}
 ```
 
 ## getAllPasienRawatJalan
 
 Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
 
-**URL** : `getAllPasienRawatJalan/`
+**URL** : `http://si-appointment.herokuapp.com/api/getAllPasienRawatJalan/`
 
 **Method** : `GET`
 
@@ -46,102 +68,172 @@ Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
 
 Mengembalikan info seorang pasien
 
-**URL** : `getPasien/{id}`
+**URL** : `http://si-appointment.herokuapp.com/api/getPasien/{id}`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
-```
-
-### Failed Response
-
-```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "id": 1,
+    "nama": "Shania Rahmi Kusmowati",
+    "statusPasien": {
+      "id": 1,
+      "jenis": "Mendaftar di IGD"
+    }
+  }
+}
 ```
 
 ## getAllDokter
 
 Mengembalikan daftar semua dokter
 
-**URL** : `getAllDokter/`
+**URL** : `http://si-appointment.herokuapp.com/api/getAllDokter/`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 1,
+      "nama": "Akarsana Narpati"
+    },
+    {
+      "id": 2,
+      "nama": "Agus Saptono"
+    }
+}
 ```
 
 ## getDokter
 
 Mengembalikan info seorang dokter
 
-**URL** : `getDokter/{id}`
+**URL** : `http://si-appointment.herokuapp.com/api/getDokter/{id}`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
-```
-
-### Failed Response
-
-```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "id": 1,
+    "nama": "Akarsana Narpati"
+  }
+}
 ```
 
 ## getAllStaffFarmasi
 
 Mengembalikan daftar semua staff farmasi
 
-**URL** : `getAllStaffFarmasi/`
+**URL** : `http://si-appointment.herokuapp.com/api/getAllStaffFarmasi/`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 1,
+      "nama": "Heru Haryanto",
+      "jenis": 0
+    },
+    {
+      "id": 2,
+      "nama": "Ridwan Hasim Marpaung",
+      "jenis": 0
+    }
+  ]
+}
 ```
 
 ## getAllStaffLab
 
 Mengembalikan daftar semua staff Laboratorium
 
-**URL** : `getAllStaffLab/`
+**URL** : `http://si-appointment.herokuapp.com/api/getAllStaffLab/`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 501,
+      "nama": "Lanang Pangestu",
+      "jenis": 1
+    },
+    {
+      "id": 502,
+      "nama": "Jayeng Kusumo",
+      "jenis": 1
+    }
+  ]
+}
 ```
 
 ## getStaff
 
 Mengembalikan info seorang staff
 
-**URL** : `getStaff/{id}`
+**URL** : `http://si-appointment.herokuapp.com/api/getStaff/{id}`
 
 **Method** : `GET`
 
 ### Success Response
 
 ```json
-```
-
-### Failed Response
-
-```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "id": 1,
+    "nama": "Heru Haryanto",
+    "jenis": 0
+  }
+}
 ```
 
 ## addBilling
 
 Menambahkan billing ke Appointment
 
-**URL** : ``
+**URL** : `http://si-appointment.herokuapp.com/api/addBilling`
 
 **Method** : `POST`
+
+**Body Param** :
+```json
+{
+  "jumlahTagihan" : 200,
+  "tanggalTagihan" : "2018-10-10",
+  "pasien" : {
+    "id" : 1
+  }
+}
+```
 
 ### Success Response
 
@@ -152,9 +244,21 @@ Menambahkan billing ke Appointment
 
 Menambahkan hasil lab ke Appointment
 
-**URL** : ``
+**URL** : `http://si-appointment.herokuapp.com/api/addLabResult`
 
 **Method** : `POST`
+
+**Body Param** :
+```json
+{
+  "jenis" : "urin",
+  "hasil" : "diabetes"
+  "tanggalPengajuan" : "2018-10-10",
+  "pasien" : {
+    "id" : 1
+  }
+}
+```
 
 ### Success Response
 
@@ -165,9 +269,20 @@ Menambahkan hasil lab ke Appointment
 
 Mengubah status seorang pasien
 
-**URL** : ``
+**URL** : `http://si-appointment.herokuapp.com/api/updatePasien`
 
 **Method** : `POST`
+
+**Body Param** :
+```json
+{
+  "id" : 1,
+  "nama" : "Desmosedici",
+  "statusPasien" : {
+    "id" : 2
+  }
+}
+```
 
 ### Success Response
 
