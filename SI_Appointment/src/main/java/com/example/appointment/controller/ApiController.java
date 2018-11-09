@@ -1,5 +1,6 @@
 package com.example.appointment.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,16 +21,13 @@ import com.example.appointment.rest.BaseResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * ApiController
  */
 @RestController
+@RequestMapping("/api")
 public class ApiController {
     @Autowired
     DokterDb dokterDb;
@@ -49,12 +47,21 @@ public class ApiController {
     @Autowired
     TagihanPasienDb tagihanPasienDb;
 
+    @GetMapping(value = "/getAllPasien")
+    public BaseResponse<List<PasienModel>> getAllPasien() {
+        BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
+        response.setStatus(200);
+        response.setMessage("success");
+        response.setResult(pasienDb.findAll());
+        return response;
+    }
+
     @GetMapping(value = "/getAllPasienIGD")
     public BaseResponse<List<PasienModel>> getAllPasienIGD() {
         BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
         response.setStatus(200);
         response.setMessage("success");
-        response.setResult(pasienDb.findBystatusPasienJenisContaining("igd"));
+        response.setResult(pasienDb.findByStatusPasienJenisIsContaining("IGD"));
         return response;
     }
 
@@ -63,7 +70,7 @@ public class ApiController {
         BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
         response.setStatus(200);
         response.setMessage("success");
-        response.setResult(pasienDb.findBystatusPasienJenisContaining("rawat jalan"));
+        response.setResult(pasienDb.findByStatusPasienJenisIsContaining("Rawat Jalan"));
         return response;
     }
 
