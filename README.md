@@ -238,6 +238,27 @@ Menambahkan billing ke Appointment
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "jumlahTagihan" : 200,
+    "tanggalTagihan" : "2018-10-10",
+    "pasien" : {
+      "id" : 1
+    }
+  }
+}
+```
+
+### Failed Response
+
+```json
+{
+  "status": 500,
+  "message": "error data",
+  "result": ""
+}
 ```
 
 ## addLabResult
@@ -263,6 +284,28 @@ Menambahkan hasil lab ke Appointment
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "jenis" : "urin",
+    "hasil" : "diabetes",
+    "tanggalPengajuan" : "2018-10-10",
+    "pasien" : {
+      "id" : 1
+    }
+  }
+}
+```
+
+### Failed Response
+
+```json
+{
+  "status": 500,
+  "message": "error data",
+  "result": ""
+}
 ```
 
 ## updatePasienStatus
@@ -287,4 +330,25 @@ Mengubah status seorang pasien
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": {
+    "id" : 1,
+    "nama" : "Desmosedici",
+    "statusPasien" : {
+      "id" : 2
+    }
+  }
+}
+```
+
+### Failed Response
+
+```json
+{
+  "status": 500,
+  "message": "error data",
+  "result": ""
+}
 ```
