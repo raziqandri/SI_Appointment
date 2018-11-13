@@ -62,6 +62,27 @@ Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
 ### Success Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 3001,
+      "nama": "Lalita Namaga",
+      "statusPasien": {
+        "id": 7,
+        "jenis": "Mendaftar di Rawat Jalan"
+      }
+    },
+    {
+      "id": 3002,
+      "nama": "Carla Tantri Agustina S.E.I",
+      "statusPasien": {
+        "id": 7,
+        "jenis": "Mendaftar di Rawat Jalan"
+      }
+    }
+}
 ```
 
 ## getPasien
@@ -326,6 +347,17 @@ Mengubah status seorang pasien
   }
 }
 ```
+
+**List Status** :
+* 1, 'Mendaftar di IGD'
+* 2, 'Berada di IGD'
+* 3, 'Selesai di IGD'
+* 4, 'Mendaftar di Rawat Inap'
+* 5, 'Berada di Rawat Inap'
+* 6, 'Selesai di Rawat Inap'
+* 7, 'Mendaftar di Rawat Jalan'
+* 8, 'Berada di Rawat Jalan'
+* 9, 'Selesai di Rawat Jalan'
 
 ### Success Response
 
