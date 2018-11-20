@@ -1,6 +1,5 @@
 package com.example.appointment.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,13 @@ import com.example.appointment.rest.BaseResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * ApiController
@@ -47,35 +52,52 @@ public class ApiController {
     @Autowired
     TagihanPasienDb tagihanPasienDb;
 
-    @GetMapping(value = "/getAllPasien")
-    public BaseResponse<List<PasienModel>> getAllPasien() {
+    @GetMapping(value = "/{groupId}/getAllPasien")
+    public BaseResponse<List<PasienModel>> getAllPasien(@PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(pasienDb.findAll());
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(pasienDb.findByFlagGroup(groupId));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
-    @GetMapping(value = "/getAllPasienIGD")
-    public BaseResponse<List<PasienModel>> getAllPasienIGD() {
+    @GetMapping(value = "/{groupId}/getAllPasienIGD")
+    public BaseResponse<List<PasienModel>> getAllPasienIGD(
+            @PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(pasienDb.findByStatusPasienJenisIsContaining("IGD"));
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(pasienDb.findByFlagGroupAndStatusPasienJenisIsContaining(groupId, "IGD"));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
-    @GetMapping(value = "/getAllPasienRawatJalan")
-    public BaseResponse<List<PasienModel>> getAllPasienRawatJalan() {
+    @GetMapping(value = "/{groupId}/getAllPasienRawatJalan")
+    public BaseResponse<List<PasienModel>> getAllPasienRawatJalan(
+            @PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(pasienDb.findByStatusPasienJenisIsContaining("Rawat Jalan"));
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(pasienDb.findByFlagGroupAndStatusPasienJenisIsContaining(groupId, "Rawat Jalan"));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
     @GetMapping(value = "/getPasien/{id}")
-    public BaseResponse<PasienModel> getPasienById(@PathVariable("id") long id) {
+    public BaseResponse<PasienModel> getPasienById(@PathVariable(name = "id", required = true) long id) {
         Optional<PasienModel> data = pasienDb.findById(id);
         BaseResponse<PasienModel> response = new BaseResponse<>();
         if (data.isPresent()) {
@@ -89,17 +111,37 @@ public class ApiController {
         return response;
     }
 
-    @GetMapping(value = "/getAllDokter")
-    public BaseResponse<List<DokterModel>> getAllDokter() {
+    @GetMapping(value = "/getPasien")
+    public BaseResponse<List<PasienModel>> getListPasien(@RequestParam(required = true, name = "listId") List<Long> listId) {
+        BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
+        List<PasienModel> data = pasienDb.findByIdIn(listId);
+        if (data.size() != 0) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(pasienDb.findByIdIn(listId));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
+        return response;
+    }
+
+    @GetMapping(value = "/{groupId}/getAllDokter")
+    public BaseResponse<List<DokterModel>> getAllDokter(@PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<DokterModel>> response = new BaseResponse<List<DokterModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(dokterDb.findAll());
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(dokterDb.findByFlagGroup(groupId));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
     @GetMapping(value = "/getDokter/{id}")
-    public BaseResponse<DokterModel> getDokterById(@PathVariable("id") long id) {
+    public BaseResponse<DokterModel> getDokterById(@PathVariable(name = "id", required = true) long id) {
         Optional<DokterModel> data = dokterDb.findById(id);
         BaseResponse<DokterModel> response = new BaseResponse<DokterModel>();
         if (data.isPresent()) {
@@ -113,26 +155,37 @@ public class ApiController {
         return response;
     }
 
-    @GetMapping(value = "/getAllStaffFarmasi")
-    public BaseResponse<List<StaffModel>> getAllStaffFarmasi() {
+    @GetMapping(value = "/{groupId}/getAllStaffFarmasi")
+    public BaseResponse<List<StaffModel>> getAllStaffFarmasi(
+            @PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<StaffModel>> response = new BaseResponse<List<StaffModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(staffDb.findByJenis(0));
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(staffDb.findByJenisAndFlagGroup(0, groupId));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
-    @GetMapping(value = "/getAllStaffLab")
-    public BaseResponse<List<StaffModel>> getAllStaffLab() {
+    @GetMapping(value = "/{groupId}/getAllStaffLab")
+    public BaseResponse<List<StaffModel>> getAllStaffLab(@PathVariable(name = "groupId", required = true) int groupId) {
         BaseResponse<List<StaffModel>> response = new BaseResponse<List<StaffModel>>();
-        response.setStatus(200);
-        response.setMessage("success");
-        response.setResult(staffDb.findByJenis(1));
+        if (groupId > 0 && groupId <= 6) {
+            response.setStatus(200);
+            response.setMessage("success");
+            response.setResult(staffDb.findByJenisAndFlagGroup(1, groupId));
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
         return response;
     }
 
     @GetMapping(value = "/getStaff/{id}")
-    public BaseResponse<StaffModel> getStaff(@PathVariable("id") long id) {
+    public BaseResponse<StaffModel> getStaff(@PathVariable(name = "id", required = true) long id) {
         Optional<StaffModel> data = staffDb.findById(id);
         BaseResponse<StaffModel> response = new BaseResponse<StaffModel>();
         if (data.isPresent()) {
@@ -146,13 +199,15 @@ public class ApiController {
         return response;
     }
 
-    @PostMapping(value = "/addBilling")
-    public BaseResponse<TagihanPasienModel> addBilling(@RequestBody @Valid TagihanPasienModel billing, BindingResult bindingResult) {
+    @PostMapping(value = "/{groupId}/addBilling")
+    public BaseResponse<TagihanPasienModel> addBilling(@PathVariable(name = "groupId", required = true) int groupId,
+            @RequestBody @Valid TagihanPasienModel billing, BindingResult bindingResult) {
         BaseResponse<TagihanPasienModel> response = new BaseResponse<TagihanPasienModel>();
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || (groupId < 1 || groupId > 6)) {
             response.setStatus(500);
             response.setMessage("error data");
         } else {
+            billing.setFlagGroup(groupId);
             tagihanPasienDb.save(billing);
             response.setStatus(200);
             response.setMessage("success");
@@ -161,13 +216,15 @@ public class ApiController {
         return response;
     }
 
-    @PostMapping(value = "/addLabResult")
-    public BaseResponse<LabPasienModel> addLabResult(@RequestBody @Valid LabPasienModel labResult, BindingResult bindingResult) {
+    @PostMapping(value = "/{groupId}/addLabResult")
+    public BaseResponse<LabPasienModel> addLabResult(@PathVariable(name = "groupId", required = true) int groupId,
+            @RequestBody @Valid LabPasienModel labResult, BindingResult bindingResult) {
         BaseResponse<LabPasienModel> response = new BaseResponse<LabPasienModel>();
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || (groupId < 1 || groupId > 6)) {
             response.setStatus(500);
             response.setMessage("error data");
         } else {
+            labResult.setFlagGroup(groupId);
             labPasienDb.save(labResult);
             response.setStatus(200);
             response.setMessage("success");
@@ -176,20 +233,27 @@ public class ApiController {
         return response;
     }
 
-    @PostMapping(value = "/updatePasien")
-    public BaseResponse<PasienModel> updatePasien(@RequestBody @Valid PasienModel pasien, BindingResult bindingResult) {
+    @PostMapping(value = "/{groupId}/updatePasien")
+    public BaseResponse<PasienModel> updatePasien(@PathVariable(name = "groupId", required = true) int groupId,
+            @RequestBody @Valid PasienModel pasien, BindingResult bindingResult) {
         BaseResponse<PasienModel> response = new BaseResponse<PasienModel>();
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || (groupId < 1 || groupId > 6)) {
             response.setStatus(500);
             response.setMessage("error data");
         } else {
             Optional<PasienModel> data = pasienDb.findById(pasien.getId());
             if (data.isPresent()) {
-                pasien.setId(data.get().getId());
-                pasienDb.save(pasien);
-                response.setStatus(200);
-                response.setMessage("success");
-                response.setResult(pasien);
+                if (data.get().getFlagGroup() != groupId) {
+                    response.setStatus(403);
+                    response.setMessage("forbidden");
+                } else {
+                    pasien.setId(data.get().getId());
+                    pasien.setFlagGroup(groupId);
+                    pasienDb.save(pasien);
+                    response.setStatus(200);
+                    response.setMessage("success");
+                    response.setResult(pasien);
+                }
             } else {
                 response.setStatus(404);
                 response.setMessage("not found");

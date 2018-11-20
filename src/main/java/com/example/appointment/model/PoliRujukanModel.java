@@ -1,12 +1,15 @@
 package com.example.appointment.model;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,8 +17,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "staff")
-public class StaffModel implements Serializable{
+@Table(name = "poli_rujukan")
+public class PoliRujukanModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -25,19 +28,14 @@ public class StaffModel implements Serializable{
     @Column(name = "nama", nullable = false)
     private String nama;
 
-    @NotNull
-    @Column(name = "jenis", nullable = false)
-    private int jenis;
-
-    @NotNull
-    @Column(name = "flag_group", nullable = false)
+    @OneToMany(mappedBy="poliRujukan", fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JsonIgnore
-    private int flagGroup;
-
+    private List<PasienModel> pasien;
+    
     public long getId() {
         return id;
     }
-
+    
     public void setId(long id) {
         this.id = id;
     }
@@ -50,19 +48,11 @@ public class StaffModel implements Serializable{
         this.nama = nama;
     }
 
-    public int getJenis() {
-        return jenis;
+    public List<PasienModel> getPasien() {
+        return pasien;
     }
 
-    public void setJenis(int jenis) {
-        this.jenis = jenis;
-    }
-
-    public int getFlagGroup() {
-        return flagGroup;
-    }
-
-    public void setFlagGroup(int flagGroup) {
-        this.flagGroup = flagGroup;
+    public void setPasien(List<PasienModel> pasien) {
+        this.pasien = pasien;
     }
 }

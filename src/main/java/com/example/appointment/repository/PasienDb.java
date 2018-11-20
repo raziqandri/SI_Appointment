@@ -9,5 +9,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PasienDb extends JpaRepository<PasienModel, Long> {
-    List<PasienModel> findByStatusPasienJenisIsContaining(String jenis);
+    List<PasienModel> findByFlagGroupAndStatusPasienJenisIsContaining(int flagGroup, String jenis);
+
+    List<PasienModel> findByFlagGroup(int flagGroup);
+
+    List<PasienModel> findByIdIn(List<Long> listId);
 }

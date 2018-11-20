@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -38,6 +40,11 @@ public class LabPasienModel implements Serializable {
     @NotNull
     @Column(name="tanggal_pengajuan")
     private Date tanggalPengajuan;
+
+    @NotNull
+    @Column(name = "flag_group", nullable = false)
+    @JsonIgnore
+    private int flagGroup;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_pasien", referencedColumnName="id", nullable=false)
@@ -74,6 +81,14 @@ public class LabPasienModel implements Serializable {
     
     public void setTanggalPengajuan(Date tanggalPengajuan) {
         this.tanggalPengajuan = tanggalPengajuan;
+    }
+
+    public int getFlagGroup() {
+        return flagGroup;
+    }
+
+    public void setFlagGroup(int flagGroup) {
+        this.flagGroup = flagGroup;
     }
 
     public PasienModel getPasien() {

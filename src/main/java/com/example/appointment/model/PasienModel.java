@@ -34,6 +34,11 @@ public class PasienModel implements Serializable {
     @Column(name = "nama", nullable = false)
     private String nama;
 
+    @NotNull
+    @Column(name = "flag_group", nullable = false)
+    @JsonIgnore
+    private int flagGroup;
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="status", referencedColumnName="id", nullable=false)
     @OnDelete(action= OnDeleteAction.NO_ACTION)
@@ -46,6 +51,11 @@ public class PasienModel implements Serializable {
     @OneToMany(mappedBy="pasien", fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JsonIgnore
     private List<TagihanPasienModel> pasienTagihan;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_poli_rujukan", referencedColumnName="id", nullable=true)
+    @OnDelete(action= OnDeleteAction.NO_ACTION)
+    private PoliRujukanModel poliRujukan;
 
     public long getId() {
         return id;
@@ -61,6 +71,14 @@ public class PasienModel implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public int getFlagGroup() {
+        return flagGroup;
+    }
+
+    public void setFlagGroup(int flagGroup) {
+        this.flagGroup = flagGroup;
     }
 
     public StatusPasienModel getStatusPasien() {
@@ -85,5 +103,13 @@ public class PasienModel implements Serializable {
 
     public void setPasienTagihan(List<TagihanPasienModel> pasienTagihan) {
         this.pasienTagihan = pasienTagihan;
+    }
+
+    public PoliRujukanModel getPoliRujukan() {
+        return poliRujukan;
+    }
+
+    public void setPoliRujukan(PoliRujukanModel poliRujukan) {
+        this.poliRujukan = poliRujukan;
     }
 }

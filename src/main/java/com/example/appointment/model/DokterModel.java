@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "dokter")
 public class DokterModel implements Serializable {
@@ -22,6 +24,11 @@ public class DokterModel implements Serializable {
     @Size(max = 255)
     @Column(name = "nama", nullable = false)
     private String nama;
+
+    @NotNull
+    @Column(name = "flag_group", nullable = false)
+    @JsonIgnore
+    private int flagGroup;
 
     public long getId() {
         return id;
@@ -37,5 +44,13 @@ public class DokterModel implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public int getFlagGroup() {
+        return flagGroup;
+    }
+
+    public void setFlagGroup(int flagGroup) {
+        this.flagGroup = flagGroup;
     }
 }
