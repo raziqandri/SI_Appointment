@@ -1,6 +1,7 @@
 package com.example.appointment.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,6 +39,9 @@ public class PasienModel implements Serializable {
     @Column(name = "flag_group", nullable = false)
     @JsonIgnore
     private int flagGroup;
+
+    @Column(name="tgl_rujukan", nullable = true)
+    private Date tanggalRujukan;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="status", referencedColumnName="id", nullable=false)
@@ -79,6 +83,14 @@ public class PasienModel implements Serializable {
 
     public void setFlagGroup(int flagGroup) {
         this.flagGroup = flagGroup;
+    }
+
+    public Date getTanggalRujukan() {
+        return tanggalRujukan;
+    }
+
+    public void setTanggalRujukan(Date tanggalRujukan) {
+        this.tanggalRujukan = tanggalRujukan;
     }
 
     public StatusPasienModel getStatusPasien() {
