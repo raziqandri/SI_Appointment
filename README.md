@@ -21,7 +21,7 @@ API List:
 
 Mengembalikan daftar semua pasien yang mendaftar di IGD
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getAllPasienIGD`](http://si-appointment.herokuapp.com/api/getAllPasienIGD)
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllPasienIGD`](http://si-appointment.herokuapp.com/api/1/getAllPasienIGD)
 
 **Method** : `GET`
 
@@ -56,7 +56,7 @@ Mengembalikan daftar semua pasien yang mendaftar di IGD
 
 Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getAllPasienRawatJalan/`](http://si-appointment.herokuapp.com/api/getAllPasienRawatJalan/)
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllPasienRawatJalan/`](http://si-appointment.herokuapp.com/api/1/getAllPasienRawatJalan/)
 
 **Method** : `GET`
 
@@ -149,7 +149,7 @@ Mengembalikan info pasien yang berada pada list
 
 Mengembalikan daftar semua dokter
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getAllDokter`](http://si-appointment.herokuapp.com/api/getAllDokter)
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllDokter`](http://si-appointment.herokuapp.com/api/1/getAllDokter)
 
 **Method** : `GET`
 
@@ -196,7 +196,7 @@ Mengembalikan info seorang dokter
 
 Mengembalikan daftar semua staff farmasi
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getAllStaffFarmasi`](http://si-appointment.herokuapp.com/api/getAllStaffFarmasi)
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllStaffFarmasi`](http://si-appointment.herokuapp.com/api/1/getAllStaffFarmasi)
 
 **Method** : `GET`
 
@@ -225,7 +225,7 @@ Mengembalikan daftar semua staff farmasi
 
 Mengembalikan daftar semua staff Laboratorium
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getAllStaffLab`](http://si-appointment.herokuapp.com/api/getAllStaffLab)
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllStaffLab`](http://si-appointment.herokuapp.com/api/1/getAllStaffLab)
 
 **Method** : `GET`
 
@@ -276,7 +276,7 @@ Mengembalikan info seorang staff
 
 Menambahkan billing ke Appointment
 
-**URL** : `http://si-appointment.herokuapp.com/api/addBilling`
+**URL** : `http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/addBilling`
 
 **Method** : `POST`
 
@@ -323,7 +323,7 @@ Menambahkan billing ke Appointment
 
 Menambahkan hasil lab ke Appointment
 
-**URL** : `http://si-appointment.herokuapp.com/api/addLabResult`
+**URL** : `http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/addLabResult`
 
 **Method** : `POST`
 
@@ -372,7 +372,7 @@ Menambahkan hasil lab ke Appointment
 
 Mengubah status seorang pasien
 
-**URL** : `http://si-appointment.herokuapp.com/api/updatePasien`
+**URL** : `http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/updatePasien`
 
 **Method** : `POST`
 
