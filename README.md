@@ -30,30 +30,30 @@ Mengembalikan daftar semua pasien
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 85,
-      "nama": "Nabila Pratiwi",
-      "tanggalRujukan": null,
-      "statusPasien": {
-          "id": 1,
-          "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    },
-    {
-      "id": 91,
-      "nama": "Tami Permata",
-      "tanggalRujukan": null,
-      "statusPasien": {
-          "id": 1,
-          "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 85,
+			"nama": "Nabila Pratiwi",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		},
+		{
+			"id": 91,
+			"nama": "Tami Permata",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		}
+	]
 }
 ```
 
@@ -69,30 +69,30 @@ Mengembalikan daftar semua pasien yang mendaftar di IGD
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 2,
-      "nama": "Hana Purwanti",
-      "tanggalRujukan": null,
-      "statusPasien": {
-        "id": 1,
-        "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    },
-    {
-      "id": 3,
-      "nama": "Kamila Utami",
-      "tanggalRujukan": null,
-      "statusPasien": {
-        "id": 1,
-        "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 2,
+			"nama": "Hana Purwanti",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		},
+		{
+			"id": 3,
+			"nama": "Kamila Utami",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		}
+	]
 }
 ```
 
@@ -108,36 +108,36 @@ Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 3001,
-      "nama": "Lalita Namaga",
-      "tanggalRujukan": "2018-08-13",
-      "statusPasien": {
-        "id": 7,
-        "jenis": "Mendaftar di Rawat Jalan"
-      },
-      "poliRujukan": {
-        "id": 1,
-        "nama": "Poli Penyakit Dalam"
-      }
-    },
-    {
-      "id": 3007,
-      "nama": "Rini Hesti Riyanti",
-      "tanggalRujukan": "2018-07-22",
-      "statusPasien": {
-        "id": 7,
-        "jenis": "Mendaftar di Rawat Jalan"
-      },
-      "poliRujukan": {
-        "id": 2,
-        "nama": "Poli Mata"
-      }
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 3001,
+			"nama": "Lalita Namaga",
+			"tanggalRujukan": "2018-08-13",
+			"statusPasien": {
+				"id": 7,
+				"jenis": "Mendaftar di Rawat Jalan"
+			},
+			"poliRujukan": {
+				"id": 1,
+				"nama": "Poli Penyakit Dalam"
+			}
+		},
+		{
+			"id": 3007,
+			"nama": "Rini Hesti Riyanti",
+			"tanggalRujukan": "2018-07-22",
+			"statusPasien": {
+				"id": 7,
+				"jenis": "Mendaftar di Rawat Jalan"
+			},
+			"poliRujukan": {
+				"id": 2,
+				"nama": "Poli Mata"
+			}
+		}
+	]
 }
 ```
 
@@ -163,18 +163,18 @@ Mengembalikan info seorang pasien
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "nama": "Shania Rahmi Kusmowati",
-    "tanggalRujukan": null,
-    "statusPasien": {
-      "id": 1,
-      "jenis": "Mendaftar di IGD"
-    },
-    "poliRujukan": null
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"nama": "Shania Rahmi Kusmowati",
+		"tanggalRujukan": null,
+		"statusPasien": {
+			"id": 1,
+			"jenis": "Mendaftar di IGD"
+		},
+		"poliRujukan": null
+	}
 }
 ```
 
@@ -190,30 +190,30 @@ Mengembalikan info pasien yang berada pada list
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 5,
-      "nama": "Usyi Palastri",
-      "tanggalRujukan": null,
-      "statusPasien": {
-        "id": 1,
-        "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    },
-    {
-      "id": 10,
-      "nama": "Ina Nuraini",
-      "tanggalRujukan": null,
-      "statusPasien": {
-        "id": 1,
-        "jenis": "Mendaftar di IGD"
-      },
-      "poliRujukan": null
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 5,
+			"nama": "Usyi Palastri",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		},
+		{
+			"id": 10,
+			"nama": "Ina Nuraini",
+			"tanggalRujukan": null,
+			"statusPasien": {
+				"id": 1,
+				"jenis": "Mendaftar di IGD"
+			},
+			"poliRujukan": null
+		}
+	]
 }
 ```
 
@@ -229,18 +229,18 @@ Mengembalikan daftar semua dokter
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 1,
-      "nama": "Akarsana Narpati"
-    },
-    {
-      "id": 2,
-      "nama": "Agus Saptono"
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 1,
+			"nama": "Akarsana Narpati"
+		},
+		{
+			"id": 2,
+			"nama": "Agus Saptono"
+		}
+	]
 }
 ```
 
@@ -256,12 +256,12 @@ Mengembalikan info seorang dokter
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "nama": "Akarsana Narpati"
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"nama": "Akarsana Narpati"
+	}
 }
 ```
 
@@ -277,20 +277,20 @@ Mengembalikan daftar semua staff farmasi
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 1,
-      "nama": "Heru Haryanto",
-      "jenis": 0
-    },
-    {
-      "id": 2,
-      "nama": "Ridwan Hasim Marpaung",
-      "jenis": 0
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 1,
+			"nama": "Heru Haryanto",
+			"jenis": 0
+		},
+		{
+			"id": 2,
+			"nama": "Ridwan Hasim Marpaung",
+			"jenis": 0
+		}
+	]
 }
 ```
 
@@ -306,20 +306,20 @@ Mengembalikan daftar semua staff Laboratorium
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": [
-    {
-      "id": 501,
-      "nama": "Lanang Pangestu",
-      "jenis": 1
-    },
-    {
-      "id": 502,
-      "nama": "Jayeng Kusumo",
-      "jenis": 1
-    }
-  ]
+	"status": 200,
+	"message": "success",
+	"result": [
+		{
+			"id": 501,
+			"nama": "Lanang Pangestu",
+			"jenis": 1
+		},
+		{
+			"id": 502,
+			"nama": "Jayeng Kusumo",
+			"jenis": 1
+		}
+	]
 }
 ```
 
@@ -335,13 +335,13 @@ Mengembalikan info seorang staff
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "nama": "Heru Haryanto",
-    "jenis": 0
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"nama": "Heru Haryanto",
+		"jenis": 0
+	}
 }
 ```
 
@@ -358,11 +358,11 @@ Menambahkan billing ke Appointment
 **Body Param** :
 ```json
 {
-  "jumlahTagihan" : 200,
-  "tanggalTagihan" : "2018-10-10",
-  "pasien" : {
-    "id" : 1
-  }
+	"jumlahTagihan" : 200,
+	"tanggalTagihan" : "2018-10-10",
+	"pasien" : {
+		"id" : 1
+	}
 }
 ```
 
@@ -370,16 +370,16 @@ Menambahkan billing ke Appointment
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "jumlahTagihan": 200,
-    "tanggalTagihan": "2018-10-10",
-    "pasien": {
-      "id": 1
-    }
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"jumlahTagihan": 200,
+		"tanggalTagihan": "2018-10-10",
+		"pasien": {
+			"id": 1
+		}
+	}
 }
 ```
 
@@ -387,9 +387,9 @@ Menambahkan billing ke Appointment
 
 ```json
 {
-  "status": 500,
-  "message": "error data",
-  "result": null
+	"status": 500,
+	"message": "error data",
+	"result": null
 }
 ```
 
@@ -406,12 +406,12 @@ Menambahkan hasil lab ke Appointment
 **Body Param** :
 ```json
 {
-  "jenis" : "urin",
-  "hasil" : "diabetes",
-  "tanggalPengajuan" : "2018-10-10",
-  "pasien" : {
-    "id" : 1
-  }
+	"jenis" : "urin",
+	"hasil" : "diabetes",
+	"tanggalPengajuan" : "2018-10-10",
+	"pasien" : {
+		"id" : 1
+	}
 }
 ```
 
@@ -419,17 +419,17 @@ Menambahkan hasil lab ke Appointment
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "jenis": "urin",
-    "hasil": "diabetes",
-    "tanggalPengajuan": "2018-10-10",
-    "pasien": {
-      "id": 1
-    }
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"jenis": "urin",
+		"hasil": "diabetes",
+		"tanggalPengajuan": "2018-10-10",
+		"pasien": {
+			"id": 1
+		}
+	}
 }
 ```
 
@@ -437,9 +437,9 @@ Menambahkan hasil lab ke Appointment
 
 ```json
 {
-  "status": 500,
-  "message": "error data",
-  "result": null
+	"status": 500,
+	"message": "error data",
+	"result": null
 }
 ```
 
@@ -456,11 +456,11 @@ Mengubah status seorang pasien.
 **Body Param** :
 ```json
 {
-  "id": 1,
-  "nama": "Desmosedici",
-  "tanggalRujukan" : "2018-02-14",
-  "poliRujukan" : {
-    "id" : 1
+	"id": 1,
+	"nama": "Desmosedici",
+	"tanggalRujukan" : "2018-02-14",
+	"poliRujukan" : {
+		"id" : 1
 	},
 	"statusPasien": {
 		"id": 5
@@ -484,19 +484,19 @@ Key "tanggalRujukan" dan "poliRujukan" bersifat opsional.
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "result": {
-    "id": 1,
-    "nama": "Desmosedici",
-    "tanggalRujukan": "2018-02-14",
-    "statusPasien": {
-      "id": 5
-    },
-    "poliRujukan": {
-      "id": 1
-    }
-  }
+	"status": 200,
+	"message": "success",
+	"result": {
+		"id": 1,
+		"nama": "Desmosedici",
+		"tanggalRujukan": "2018-02-14",
+		"statusPasien": {
+			"id": 5
+		},
+		"poliRujukan": {
+			"id": 1
+		}
+	}
 }
 ```
 
@@ -504,8 +504,8 @@ Key "tanggalRujukan" dan "poliRujukan" bersifat opsional.
 
 ```json
 {
-  "status": 500,
-  "message": "error data",
-  "result": null
+	"status": 500,
+	"message": "error data",
+	"result": null
 }
 ```
