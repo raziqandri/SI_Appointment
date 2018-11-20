@@ -5,6 +5,7 @@ Rest API asisten dosen untuk Tugas Proyek [APAP Gasal 2018/2019](https://github.
 Base url : 
 
 API List:
+* [getAllPasien](#getallpasien)
 * [getAllPasienIGD](#getallpasienigd)
 * [getAllPasienRawatJalan](#getallpasienrawatjalan)
 * [getPasien](#getpasien)
@@ -16,6 +17,45 @@ API List:
 * [addBilling](#addbilling)
 * [addLabResult](#addlabresult)
 * [updatePasienStatus](#updatepasienstatus)
+
+## getAllPasien
+
+Mengembalikan daftar semua pasien
+
+**URL** : [`http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/getAllPasien`](http://si-appointment.herokuapp.com/api/1/getAllPasien)
+
+**Method** : `GET`
+
+### Success Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 85,
+      "nama": "Nabila Pratiwi",
+      "tanggalRujukan": null,
+      "statusPasien": {
+          "id": 1,
+          "jenis": "Mendaftar di IGD"
+      },
+      "poliRujukan": null
+    },
+    {
+      "id": 91,
+      "nama": "Tami Permata",
+      "tanggalRujukan": null,
+      "statusPasien": {
+          "id": 1,
+          "jenis": "Mendaftar di IGD"
+      },
+      "poliRujukan": null
+    }
+  ]
+}
+```
 
 ## getAllPasienIGD
 
@@ -35,18 +75,22 @@ Mengembalikan daftar semua pasien yang mendaftar di IGD
     {
       "id": 2,
       "nama": "Hana Purwanti",
+      "tanggalRujukan": null,
       "statusPasien": {
         "id": 1,
         "jenis": "Mendaftar di IGD"
-      }
+      },
+      "poliRujukan": null
     },
     {
       "id": 3,
       "nama": "Kamila Utami",
+      "tanggalRujukan": null,
       "statusPasien": {
         "id": 1,
         "jenis": "Mendaftar di IGD"
-      }
+      },
+      "poliRujukan": null
     }
   ]
 }
@@ -70,21 +114,42 @@ Mengembalikan daftar semua pasien yang mendaftar di Rawat Jalan
     {
       "id": 3001,
       "nama": "Lalita Namaga",
+      "tanggalRujukan": "2018-08-13",
       "statusPasien": {
         "id": 7,
         "jenis": "Mendaftar di Rawat Jalan"
+      },
+      "poliRujukan": {
+        "id": 1,
+        "nama": "Poli Penyakit Dalam"
       }
     },
     {
-      "id": 3002,
-      "nama": "Carla Tantri Agustina S.E.I",
+      "id": 3007,
+      "nama": "Rini Hesti Riyanti",
+      "tanggalRujukan": "2018-07-22",
       "statusPasien": {
         "id": 7,
         "jenis": "Mendaftar di Rawat Jalan"
+      },
+      "poliRujukan": {
+        "id": 2,
+        "nama": "Poli Mata"
       }
     }
+  ]
 }
 ```
+
+**List Poli Rujukan** :
+* 1, 'Poli Penyakit Dalam'
+* 2, 'Poli Mata'
+* 3, 'Poli Saraf'
+* 4, 'Poli THT'
+* 5, 'Poli Gigi dan Mulut'
+* 6, 'Poli Konsultasi Gizi'
+* 7, 'Poli Fisioterapi'
+* 8, 'Poli Penyakit Dalam'
 
 ## getPasien
 
@@ -103,10 +168,12 @@ Mengembalikan info seorang pasien
   "result": {
     "id": 1,
     "nama": "Shania Rahmi Kusmowati",
+    "tanggalRujukan": null,
     "statusPasien": {
       "id": 1,
       "jenis": "Mendaftar di IGD"
-    }
+    },
+    "poliRujukan": null
   }
 }
 ```
@@ -129,19 +196,24 @@ Mengembalikan info pasien yang berada pada list
     {
       "id": 5,
       "nama": "Usyi Palastri",
+      "tanggalRujukan": null,
       "statusPasien": {
         "id": 1,
         "jenis": "Mendaftar di IGD"
-      }
+      },
+      "poliRujukan": null
     },
     {
       "id": 10,
       "nama": "Ina Nuraini",
+      "tanggalRujukan": null,
       "statusPasien": {
         "id": 1,
         "jenis": "Mendaftar di IGD"
-      }
+      },
+      "poliRujukan": null
     }
+  ]
 }
 ```
 
@@ -168,6 +240,7 @@ Mengembalikan daftar semua dokter
       "id": 2,
       "nama": "Agus Saptono"
     }
+  ]
 }
 ```
 
@@ -300,10 +373,11 @@ Menambahkan billing ke Appointment
   "status": 200,
   "message": "success",
   "result": {
-    "jumlahTagihan" : 200,
-    "tanggalTagihan" : "2018-10-10",
-    "pasien" : {
-      "id" : 1
+    "id": 1,
+    "jumlahTagihan": 200,
+    "tanggalTagihan": "2018-10-10",
+    "pasien": {
+      "id": 1
     }
   }
 }
@@ -315,7 +389,7 @@ Menambahkan billing ke Appointment
 {
   "status": 500,
   "message": "error data",
-  "result": ""
+  "result": null
 }
 ```
 
@@ -348,11 +422,12 @@ Menambahkan hasil lab ke Appointment
   "status": 200,
   "message": "success",
   "result": {
-    "jenis" : "urin",
-    "hasil" : "diabetes",
-    "tanggalPengajuan" : "2018-10-10",
-    "pasien" : {
-      "id" : 1
+    "id": 1,
+    "jenis": "urin",
+    "hasil": "diabetes",
+    "tanggalPengajuan": "2018-10-10",
+    "pasien": {
+      "id": 1
     }
   }
 }
@@ -364,13 +439,13 @@ Menambahkan hasil lab ke Appointment
 {
   "status": 500,
   "message": "error data",
-  "result": ""
+  "result": null
 }
 ```
 
 ## updatePasienStatus
 
-Mengubah status seorang pasien
+Mengubah status seorang pasien.
 
 **URL** : `http://si-appointment.herokuapp.com/api/{kodeGroupBesar}/updatePasien`
 
@@ -381,13 +456,18 @@ Mengubah status seorang pasien
 **Body Param** :
 ```json
 {
-  "id" : 1,
-  "nama" : "Desmosedici",
-  "statusPasien" : {
-    "id" : 2
-  }
+  "id": 1,
+  "nama": "Desmosedici",
+  "tanggalRujukan" : "2018-02-14",
+  "poliRujukan" : {
+    "id" : 1
+	},
+	"statusPasien": {
+		"id": 5
+	}
 }
 ```
+Key "tanggalRujukan" dan "poliRujukan" bersifat opsional.
 
 **List Status** :
 * 1, 'Mendaftar di IGD'
@@ -407,10 +487,14 @@ Mengubah status seorang pasien
   "status": 200,
   "message": "success",
   "result": {
-    "id" : 1,
-    "nama" : "Desmosedici",
-    "statusPasien" : {
-      "id" : 2
+    "id": 1,
+    "nama": "Desmosedici",
+    "tanggalRujukan": "2018-02-14",
+    "statusPasien": {
+      "id": 5
+    },
+    "poliRujukan": {
+      "id": 1
     }
   }
 }
@@ -422,6 +506,6 @@ Mengubah status seorang pasien
 {
   "status": 500,
   "message": "error data",
-  "result": ""
+  "result": null
 }
 ```
