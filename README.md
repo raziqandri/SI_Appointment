@@ -115,7 +115,7 @@ Mengembalikan info seorang pasien
 
 Mengembalikan info pasien yang berada pada list
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getPasien?listId=5`](http://si-appointment.herokuapp.com/api/getPasien?listId=5,10)
+**URL** : [`http://si-appointment.herokuapp.com/api/getPasien?listId=5,10`](http://si-appointment.herokuapp.com/api/getPasien?listId=5,10)
 
 **Method** : `GET`
 
