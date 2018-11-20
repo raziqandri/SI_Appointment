@@ -254,7 +254,7 @@ Mengembalikan daftar semua staff Laboratorium
 
 Mengembalikan info seorang staff
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getStaff`](http://si-appointment.herokuapp.com/api/getStaff/1)
+**URL** : [`http://si-appointment.herokuapp.com/api/getStaff/{id}`](http://si-appointment.herokuapp.com/api/getStaff/1)
 
 **Method** : `GET`
 
