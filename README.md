@@ -8,6 +8,7 @@ API List:
 * [getAllPasienIGD](#getallpasienigd)
 * [getAllPasienRawatJalan](#getallpasienrawatjalan)
 * [getPasien](#getpasien)
+* [getPasienByListId](#getpasienbylistid)
 * [getAllDokter](#getalldokter)
 * [getDokter](#getdokter)
 * [getAllStaffFarmasi](#getallstafffarmasi)
@@ -107,6 +108,40 @@ Mengembalikan info seorang pasien
       "jenis": "Mendaftar di IGD"
     }
   }
+}
+```
+
+## getPasienByListId
+
+Mengembalikan info pasien yang berada pada list
+
+**URL** : [`http://si-appointment.herokuapp.com/api/getPasien?listId=5`](http://si-appointment.herokuapp.com/api/getPasien?listId=5,10)
+
+**Method** : `GET`
+
+### Success Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "result": [
+    {
+      "id": 5,
+      "nama": "Usyi Palastri",
+      "statusPasien": {
+        "id": 1,
+        "jenis": "Mendaftar di IGD"
+      }
+    },
+    {
+      "id": 10,
+      "nama": "Ina Nuraini",
+      "statusPasien": {
+        "id": 1,
+        "jenis": "Mendaftar di IGD"
+      }
+    }
 }
 ```
 
@@ -245,6 +280,8 @@ Menambahkan billing ke Appointment
 
 **Method** : `POST`
 
+**Header**: `Content-Type: application/json`
+
 **Body Param** :
 ```json
 {
@@ -289,6 +326,8 @@ Menambahkan hasil lab ke Appointment
 **URL** : `http://si-appointment.herokuapp.com/api/addLabResult`
 
 **Method** : `POST`
+
+**Header**: `Content-Type: application/json`
 
 **Body Param** :
 ```json
@@ -336,6 +375,8 @@ Mengubah status seorang pasien
 **URL** : `http://si-appointment.herokuapp.com/api/updatePasien`
 
 **Method** : `POST`
+
+**Header**: `Content-Type: application/json`
 
 **Body Param** :
 ```json
