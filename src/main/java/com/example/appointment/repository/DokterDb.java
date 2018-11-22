@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DokterDb extends JpaRepository<DokterModel, Long> {
     List<DokterModel> findByFlagGroup(int flagGroup);
+
+    List<DokterModel> findByIdIn(List<Long> listId);
 }

@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StaffDb extends JpaRepository<StaffModel, Long> {
     List<StaffModel> findByJenisAndFlagGroup(int jenis, int flagGroup);
+
+    List<StaffModel> findByIdIn(List<Long> listId);
 }

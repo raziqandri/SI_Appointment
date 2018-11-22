@@ -182,11 +182,46 @@ Mengembalikan info seorang pasien
 
 Mengembalikan info pasien yang berada pada list
 
-**URL** : [`http://si-appointment.herokuapp.com/api/getPasien?listId=5,10`](http://si-appointment.herokuapp.com/api/getPasien?listId=5,10)
+**URL** : [`http://si-appointment.herokuapp.com/api/getPasien?listId=5,10&resultType=List`](http://si-appointment.herokuapp.com/api/getPasien?listId=5,10&resultType=List)
+
+**Parameter** :
+* listId = long[]
+* resultType = "Map" / "List"
 
 **Method** : `GET`
 
-### Success Response
+### Success Response as Map
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "result": {
+        "5": {
+            "id": 5,
+            "nama": "Usyi Palastri",
+            "tanggalRujukan": null,
+            "statusPasien": {
+                "id": 1,
+                "jenis": "Mendaftar di IGD"
+            },
+            "poliRujukan": null
+        },
+        "10": {
+            "id": 10,
+            "nama": "Ina Nuraini",
+            "tanggalRujukan": null,
+            "statusPasien": {
+                "id": 1,
+                "jenis": "Mendaftar di IGD"
+            },
+            "poliRujukan": null
+        }
+    }
+}
+```
+
+### Success Response as List
 
 ```json
 {
@@ -262,6 +297,56 @@ Mengembalikan info seorang dokter
 		"id": 1,
 		"nama": "Akarsana Narpati"
 	}
+}
+```
+
+## getDokterByListId
+
+Mengembalikan info dokter yang berada pada list
+
+**URL** : [`http://si-appointment.herokuapp.com/api/getDokter?listId=1,75&resultType=List`](http://si-appointment.herokuapp.com/api/getDokter?listId=1,75&resultType=List)
+
+**Parameter** :
+* listId = long[]
+* resultType = "Map" / "List"
+
+**Method** : `GET`
+
+### Success Response as Map
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "result": {
+        "1": {
+            "id": 1,
+            "nama": "Akarsana Narpati"
+        },
+        "75": {
+            "id": 75,
+            "nama": "Garang Prabowo"
+        }
+    }
+}
+```
+
+### Success Response as List
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "result": [
+        {
+            "id": 1,
+            "nama": "Akarsana Narpati"
+        },
+        {
+            "id": 75,
+            "nama": "Garang Prabowo"
+        }
+    ]
 }
 ```
 
@@ -342,6 +427,60 @@ Mengembalikan info seorang staff
 		"nama": "Heru Haryanto",
 		"jenis": 0
 	}
+}
+```
+
+## getStafByListId
+
+Mengembalikan info staf yang berada pada list
+
+**URL** : [`http://si-appointment.herokuapp.com/api/getStaff?listId=2,65&resultType=List`](http://si-appointment.herokuapp.com/api/getStaff?listId=2,65&resultType=List)
+
+**Parameter** :
+* listId = long[]
+* resultType = "Map" / "List"
+
+**Method** : `GET`
+
+### Success Response as Map
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "result": {
+        "2": {
+            "id": 2,
+            "nama": "Ridwan Hasim Marpaung",
+            "jenis": 0
+        },
+        "65": {
+            "id": 65,
+            "nama": "Joko Marbun",
+            "jenis": 0
+        }
+    }
+}
+```
+
+### Success Response as List
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "result": [
+        {
+            "id": 2,
+            "nama": "Ridwan Hasim Marpaung",
+            "jenis": 0
+        },
+        {
+            "id": 65,
+            "nama": "Joko Marbun",
+            "jenis": 0
+        }
+    ]
 }
 ```
 
@@ -467,7 +606,7 @@ Mengubah status seorang pasien.
 	}
 }
 ```
-Key "tanggalRujukan" dan "poliRujukan" bersifat opsional.
+Key "tanggalRujukan" dan "poliRujukan" pada Body Param bersifat opsional.
 
 **List Status** :
 * 1, 'Mendaftar di IGD'

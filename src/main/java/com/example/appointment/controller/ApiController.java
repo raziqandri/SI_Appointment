@@ -1,6 +1,8 @@
 package com.example.appointment.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -111,14 +113,33 @@ public class ApiController {
         return response;
     }
 
-    @GetMapping(value = "/getPasien")
-    public BaseResponse<List<PasienModel>> getListPasien(@RequestParam(required = true, name = "listId") List<Long> listId) {
-        BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
+	@GetMapping(value = "/getPasien")
+    public Object getListPasien(@RequestParam(required = true, name = "listId") List<Long> listId, 
+    		@RequestParam(required = true, name = "resultType") String resultType) {
+    	BaseResponse<List<PasienModel>> response = new BaseResponse<List<PasienModel>>();
         List<PasienModel> data = pasienDb.findByIdIn(listId);
         if (data.size() != 0) {
-            response.setStatus(200);
-            response.setMessage("success");
-            response.setResult(pasienDb.findByIdIn(listId));
+        	switch (resultType) {
+                case "Map":
+                    BaseResponse<Map<Long, PasienModel>> responseMap = new BaseResponse<Map<Long, PasienModel>>();
+                    Map<Long, PasienModel> dataMap = new HashMap<Long, PasienModel>();
+                    for (PasienModel p : data) {
+                        dataMap.put(p.getId(), p);
+                    }
+                    responseMap.setStatus(200);
+                    responseMap.setMessage("success");
+                    responseMap.setResult(dataMap);
+                    return responseMap;
+                case "List":
+                    response.setStatus(200);
+                    response.setMessage("success");
+                    response.setResult(data);
+                    break;
+                default:
+                    response.setStatus(500);
+                    response.setMessage("error data");
+                    break;
+        	}
         } else {
             response.setStatus(404);
             response.setMessage("not found");
@@ -148,6 +169,40 @@ public class ApiController {
             response.setStatus(200);
             response.setMessage("success");
             response.setResult(data.get());
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
+        return response;
+    }
+
+    @GetMapping(value = "/getDokter")
+    public Object getListDokter(@RequestParam(required = true, name = "listId") List<Long> listId, 
+    		@RequestParam(required = true, name = "resultType") String resultType) {
+    	BaseResponse<List<DokterModel>> response = new BaseResponse<List<DokterModel>>();
+        List<DokterModel> data = dokterDb.findByIdIn(listId);
+        if (data.size() != 0) {
+        	switch (resultType) {
+                case "Map":
+                    BaseResponse<Map<Long, DokterModel>> responseMap = new BaseResponse<Map<Long, DokterModel>>();
+                    Map<Long, DokterModel> dataMap = new HashMap<Long, DokterModel>();
+                    for (DokterModel d : data) {
+                        dataMap.put(d.getId(), d);
+                    }
+                    responseMap.setStatus(200);
+                    responseMap.setMessage("success");
+                    responseMap.setResult(dataMap);
+                    return responseMap;
+                case "List":
+                    response.setStatus(200);
+                    response.setMessage("success");
+                    response.setResult(data);
+                    break;
+                default:
+                    response.setStatus(500);
+                    response.setMessage("error data");
+                    break;
+        	}
         } else {
             response.setStatus(404);
             response.setMessage("not found");
@@ -192,6 +247,40 @@ public class ApiController {
             response.setStatus(200);
             response.setMessage("success");
             response.setResult(data.get());
+        } else {
+            response.setStatus(404);
+            response.setMessage("not found");
+        }
+        return response;
+    }
+
+    @GetMapping(value = "/getStaff")
+    public Object getListStaf(@RequestParam(required = true, name = "listId") List<Long> listId, 
+    		@RequestParam(required = true, name = "resultType") String resultType) {
+    	BaseResponse<List<StaffModel>> response = new BaseResponse<List<StaffModel>>();
+        List<StaffModel> data = staffDb.findByIdIn(listId);
+        if (data.size() != 0) {
+        	switch (resultType) {
+                case "Map":
+                    BaseResponse<Map<Long, StaffModel>> responseMap = new BaseResponse<Map<Long, StaffModel>>();
+                    Map<Long, StaffModel> dataMap = new HashMap<Long, StaffModel>();
+                    for (StaffModel s : data) {
+                        dataMap.put(s.getId(), s);
+                    }
+                    responseMap.setStatus(200);
+                    responseMap.setMessage("success");
+                    responseMap.setResult(dataMap);
+                    return responseMap;
+                case "List":
+                    response.setStatus(200);
+                    response.setMessage("success");
+                    response.setResult(data);
+                    break;
+                default:
+                    response.setStatus(500);
+                    response.setMessage("error data");
+                    break;
+        	}
         } else {
             response.setStatus(404);
             response.setMessage("not found");
